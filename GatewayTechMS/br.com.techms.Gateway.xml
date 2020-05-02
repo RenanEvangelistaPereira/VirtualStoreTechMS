@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>br.com.techms.Gateway</name>
+    </assembly>
+    <members>
+        <member name="M:br.com.techms.Gateway.Controllers.WeatherForecastController.Get">
+            <summary>
+            Retorna dados de teste para a função WeatherForecast
+            </summary>
+            <returns>IEnumerable of WeatherForecast</returns>
+        </member>
+    </members>
+</doc>

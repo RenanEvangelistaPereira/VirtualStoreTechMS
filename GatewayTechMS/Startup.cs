@@ -14,7 +14,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore;
-//using Swashbuckle.Swagger;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using System.IO;
 
 namespace br.com.techms.Gateway
 {
@@ -32,22 +33,55 @@ namespace br.com.techms.Gateway
         {
             services.AddControllers();
 
-            services.AddSwaggerGen(c => {
+            services.AddSwaggerGen(c =>
+            {
 
                 c.SwaggerDoc("v1",
                     new OpenApiInfo
                     {
                         Title = "Integração com meios de pagamento e meios de envio/transporte",
                         Version = "v1",
-                        Description = "API REST criada com o ASP.NET Core 3.1 para integração com meios de pagamento e meios de envio/transporte",
+                        Description =
+                            "API REST criada com o ASP.NET Core 3.1 para integração com meios de pagamento e meios de envio/transporte",
                         Contact = new OpenApiContact
                         {
                             Name = "Renan Evangelista Pereira",
                             Email = @"renanevangelistapereira@gmail.com",
                             Url = new Uri("https://github.com/RenanEvangelistaPereira")
                         },
-                        License = new OpenApiLicense() {Name = "MIT License", Url = new Uri("https://opensource.org/licenses/MIT") }
+                        License = new OpenApiLicense()
+                        {
+                            Name = "MIT License", Url = new Uri("https://opensource.org/licenses/MIT")
+                        }
                     });
+                //c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme()
+                //    {
+                //        Type = SecuritySchemeType.OAuth2,
+                //        Name = "oauth2",
+                //        In = ParameterLocation.Header,
+                //        Scheme = "",
+                //        OpenIdConnectUrl = new Uri(""),
+                //        Flows = new OpenApiOAuthFlows()
+                //        {
+                //            Implicit = new OpenApiOAuthFlow()
+                //            {
+                //                AuthorizationUrl = new Uri("/authorization-url"),
+                //                Scopes = new Dictionary<string, string>()
+                //                {
+                //                    {"read", "read access"},
+                //                    { "write", "write access"}
+                //                },
+                //                TokenUrl = new Uri("/new-token"),
+                //                RefreshUrl = new Uri("/refresh-token")
+                //            }
+                //        }
+
+                //    }
+
+                //);
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, "br.com.techms.Gateway.xml");
+                c.IncludeXmlComments(filePath);
+
             });
         }
 

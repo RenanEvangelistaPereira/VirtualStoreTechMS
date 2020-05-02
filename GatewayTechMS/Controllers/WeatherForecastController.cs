@@ -22,7 +22,10 @@ namespace br.com.techms.Gateway.Controllers
         {
             _logger = logger;
         }
-
+        /// <summary>
+        /// Retorna dados de teste para a função WeatherForecast
+        /// </summary>
+        /// <returns>IEnumerable of WeatherForecast</returns>
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
