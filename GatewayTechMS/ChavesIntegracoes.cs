@@ -14,7 +14,7 @@ namespace br.com.techms.Gateway
             get => _chave;
             set
             {
-                if (String.IsNullOrEmpty(value) || )
+                if (!(String.IsNullOrEmpty(value)) && value.Length > 10)
                 {
                     _chave = value;
                 }
